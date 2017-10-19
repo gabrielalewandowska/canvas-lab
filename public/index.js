@@ -3,18 +3,28 @@ var app = function () {
   var context = canvas.getContext("2d");
 
   var thinDraw = function(x, y) {
+    console.log("hey")
     context.beginPath();
     context.arc(x, y, 2, 0, Math.PI * 2, true);
     context.fill();
 }
 
-canvas.addEventListener("mouseover", function(event) {
-    if(event.buttons ===  0){
-      thinDraw(event.x, event.y);
-    }
+var mouseMoveFunction = function(event2){
+  thinDraw(event2.x, event2.y);
+}
+
+var isDrawing = false;
+
+canvas.addEventListener("mousedown", function(event1) {
+  isDrawing = true;
+  canvas.addEventListener("mousemove", function(event2){
+    if(isDrawing) mouseMoveFunction(event2);
+  })
 })
 
-
+canvas.addEventListener("mouseup", function(){
+  isDrawing = false;
+})
 
 
 
