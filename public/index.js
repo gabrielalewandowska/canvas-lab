@@ -1,7 +1,23 @@
 var app = function () {
+  var size = 2;
   var canvas = document.querySelector("#main-canvas");
   var context = canvas.getContext("2d");
 
+  var smBtn = document.getElementById("btn-small");
+  smBtn.addEventListener("click", function(){
+    size = 2;
+  })
+
+  var mdBtn = document.getElementById("btn-medium");
+  mdBtn.addEventListener("click", function(){
+    size = 7;
+  })
+
+  var lgBtn = document.getElementById("btn-large");
+  lgBtn.addEventListener("click", function(){
+    size = 14;
+  })
+  
   var changeColour = function () {
   context.fillStyle = this.value;
   }
@@ -11,15 +27,15 @@ var app = function () {
 
 
 
-  var thinDraw = function(x, y) {
+  var thinDraw = function(x, y, size) {
     console.log("hey")
     context.beginPath();
-    context.arc(x, y, 2, 0, Math.PI * 2, true);
+    context.arc(x, y, size, 0, Math.PI * 2, true);
     context.fill();
 }
 
 var mouseMoveFunction = function(event2){
-  thinDraw(event2.x, event2.y);
+  thinDraw(event2.x, event2.y, size);
 }
 
 var isDrawing = false;
