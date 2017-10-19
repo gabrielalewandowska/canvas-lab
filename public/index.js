@@ -2,6 +2,15 @@ var app = function () {
   var canvas = document.querySelector("#main-canvas");
   var context = canvas.getContext("2d");
 
+  var changeColour = function () {
+  context.fillStyle = this.value;
+  }
+
+  var colourPicker = document.querySelector("#input-colour");
+  colourPicker.addEventListener("change",changeColour);
+
+
+
   var thinDraw = function(x, y) {
     console.log("hey")
     context.beginPath();
